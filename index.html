@@ -10,32 +10,169 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
-    background:#111;
+    background:#050505;
+    min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    min-height:100vh;
+    overflow:hidden;
+    position:relative;
 }
+
+/* ===========================
+   FEW FAST PURPLE STARS
+=========================== */
+
+.stars,
+.stars2,
+.stars3{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:200%;
+    pointer-events:none;
+}
+
+/* Small stars */
+.stars{
+    background-image:
+        radial-gradient(circle,#c77dff 2px,transparent 3px),
+        radial-gradient(circle,#b517ff 2px,transparent 3px);
+
+    background-size:320px 320px;
+    background-position:40px 60px,180px 200px;
+
+    animation:move1 12s linear infinite;
+    opacity:.9;
+    filter:drop-shadow(0 0 8px #b517ff);
+}
+
+/* Medium stars */
+.stars2{
+    background-image:
+        radial-gradient(circle,#ffffff 3px,transparent 4px),
+        radial-gradient(circle,#d78cff 3px,transparent 4px);
+
+    background-size:480px 480px;
+    background-position:120px 80px,280px 260px;
+
+    animation:move2 18s linear infinite;
+    opacity:.65;
+    filter:drop-shadow(0 0 12px #c77dff);
+}
+
+/* Big stars */
+.stars3{
+    background-image:
+        radial-gradient(circle,#ffffff 4px,transparent 5px);
+
+    background-size:700px 700px;
+    background-position:250px 180px;
+
+    animation:move3 24s linear infinite;
+    opacity:.45;
+    filter:drop-shadow(0 0 18px #ffffff);
+}
+
+@keyframes move1{
+    from{transform:translateY(0);}
+    to{transform:translateY(-50%);}
+}
+
+@keyframes move2{
+    from{transform:translateY(0);}
+    to{transform:translateY(-50%);}
+}
+
+@keyframes move3{
+    from{transform:translateY(0);}
+    to{transform:translateY(-50%);}
+}
+
+/* ===========================
+      PURPLE GLOW
+=========================== */
+
+body::before{
+    content:"";
+    position:absolute;
+    width:700px;
+    height:700px;
+    background:radial-gradient(circle,#8a2be255,transparent 70%);
+    filter:blur(80px);
+    animation:pulse 5s ease-in-out infinite;
+}
+
+@keyframes pulse{
+    0%,100%{
+        transform:scale(1);
+        opacity:.6;
+    }
+    50%{
+        transform:scale(1.15);
+        opacity:1;
+    }
+}
+
+/* ===========================
+          CARD
+=========================== */
 
 .container{
+    position:relative;
+    z-index:10;
+
     width:700px;
     max-width:90%;
-    background:#1f1f1f;
+
     padding:50px;
-    border-radius:20px;
+
+    border-radius:22px;
+
+    background:rgba(25,25,25,.82);
+
+    backdrop-filter:blur(10px);
+
+    border:2px solid rgba(162,89,255,.35);
+
     text-align:center;
-    box-shadow:0 0 35px rgba(162,89,255,.8);
+
+    box-shadow:
+    0 0 35px #8a2be2,
+    0 0 70px rgba(162,89,255,.25);
 }
 
+/* ===========================
+        TITLE
+=========================== */
+
 h1{
-    color:#a259ff;
+    color:#c77dff;
     font-size:55px;
-    text-shadow:0 0 20px #a259ff;
     margin-bottom:15px;
+
+    animation:glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow{
+
+from{
+text-shadow:
+0 0 10px #a259ff,
+0 0 20px #a259ff;
+}
+
+to{
+text-shadow:
+0 0 25px #a259ff,
+0 0 50px #a259ff,
+0 0 80px #a259ff;
+}
+
 }
 
 .subtitle{
@@ -43,6 +180,10 @@ h1{
     font-size:24px;
     margin-bottom:35px;
 }
+
+/* ===========================
+        BUTTONS
+=========================== */
 
 .buttons{
     display:flex;
@@ -59,85 +200,141 @@ h1{
 }
 
 .support-text{
-    color:#ffffff;
+    color:white;
     font-size:18px;
+    margin-bottom:12px;
     font-weight:bold;
-    margin-bottom:10px;
 }
 
 .youtube-btn,
 .discord-btn{
-    text-decoration:none;
-    color:white;
-    padding:18px 40px;
-    border-radius:12px;
-    font-size:22px;
-    font-weight:bold;
-    transition:.3s;
+
+display:inline-block;
+
+padding:18px 42px;
+
+border-radius:12px;
+
+text-decoration:none;
+
+font-size:22px;
+
+font-weight:bold;
+
+color:white;
+
+transition:.3s;
+
 }
 
 .youtube-btn{
-    background:#ff0000;
-    box-shadow:0 0 20px #ff0000;
+
+background:#ff0000;
+
+box-shadow:
+0 0 20px red,
+0 0 40px rgba(255,0,0,.4);
+
 }
 
 .youtube-btn:hover{
-    background:#ff3333;
-    transform:scale(1.08);
-    box-shadow:0 0 35px #ff0000;
+
+transform:translateY(-4px) scale(1.06);
+
+box-shadow:
+0 0 30px red,
+0 0 60px red;
+
 }
 
 .discord-btn{
-    background:#a259ff;
-    box-shadow:0 0 20px #a259ff;
+
+background:#8a2be2;
+
+box-shadow:
+0 0 20px #8a2be2,
+0 0 40px rgba(138,43,226,.5);
+
 }
 
 .discord-btn:hover{
-    background:#bb7cff;
-    transform:scale(1.08);
-    box-shadow:0 0 35px #a259ff;
+
+transform:translateY(-4px) scale(1.06);
+
+box-shadow:
+0 0 30px #8a2be2,
+0 0 60px #8a2be2;
+
 }
 
-@media (max-width:600px){
-    h1{
-        font-size:40px;
-    }
+/* ===========================
+      MOBILE
+=========================== */
 
-    .subtitle{
-        font-size:20px;
-    }
+@media(max-width:650px){
 
-    .buttons{
-        flex-direction:column;
-        gap:20px;
-    }
+.container{
+padding:35px 25px;
+}
+
+h1{
+font-size:38px;
+}
+
+.subtitle{
+font-size:18px;
+}
+
+.buttons{
+flex-direction:column;
+gap:22px;
+align-items:center;
+}
+
+.youtube-btn,
+.discord-btn{
+font-size:20px;
+padding:16px 30px;
+}
+
 }
 </style>
 
 </head>
+
 <body>
+
+<div class="stars"></div>
+<div class="stars2"></div>
+<div class="stars3"></div>
 
 <div class="container">
 
-    <h1>Join BR0S DC Server</h1>
+<h1>Join BR0S DC Server</h1>
 
-    <p class="subtitle">Click a button below</p>
+<p class="subtitle">Click a button below</p>
 
-    <div class="buttons">
+<div class="buttons">
 
-        <div class="youtube-section">
-            <p class="support-text">❤️ Support us here ❤️</p>
+<div class="youtube-section">
 
-            <a href="https://www.youtube.com/@HamduVibes007" target="_blank" class="youtube-btn">
-                ▶ YouTube
-            </a>
-        </div>
+<p class="support-text">❤️ Support us here ❤️</p>
 
-        <a href="https://discord.gg/DBYWv6rB" target="_blank" class="discord-btn">
-            💜 Join Now
-        </a>
+<a class="youtube-btn"
+href="https://www.youtube.com/@HamduVibes007"
+target="_blank">
+▶ YouTube
+</a>
 
-    </div>
+</div>
+
+<a class="discord-btn"
+href="https://discord.gg/DBYWv6rB"
+target="_blank">
+💜 Join Now
+</a>
+
+</div>
 
 </div>
 

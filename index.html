@@ -4,338 +4,137 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Join BR0S DC Server</title>
-
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,Helvetica,sans-serif;
-}
-
-body{
-    background:#050505;
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    overflow:hidden;
-    position:relative;
-}
-
-/* ===========================
-   FEW FAST PURPLE STARS
-=========================== */
-
-.stars,
-.stars2,
-.stars3{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:200%;
-    pointer-events:none;
-}
-
-/* Small stars */
-.stars{
-    background-image:
-        radial-gradient(circle,#c77dff 2px,transparent 3px),
-        radial-gradient(circle,#b517ff 2px,transparent 3px);
-
-    background-size:320px 320px;
-    background-position:40px 60px,180px 200px;
-
-    animation:move1 12s linear infinite;
-    opacity:.9;
-    filter:drop-shadow(0 0 8px #b517ff);
-}
-
-/* Medium stars */
-.stars2{
-    background-image:
-        radial-gradient(circle,#ffffff 3px,transparent 4px),
-        radial-gradient(circle,#d78cff 3px,transparent 4px);
-
-    background-size:480px 480px;
-    background-position:120px 80px,280px 260px;
-
-    animation:move2 18s linear infinite;
-    opacity:.65;
-    filter:drop-shadow(0 0 12px #c77dff);
-}
-
-/* Big stars */
-.stars3{
-    background-image:
-        radial-gradient(circle,#ffffff 4px,transparent 5px);
-
-    background-size:700px 700px;
-    background-position:250px 180px;
-
-    animation:move3 24s linear infinite;
-    opacity:.45;
-    filter:drop-shadow(0 0 18px #ffffff);
-}
-
-@keyframes move1{
-    from{transform:translateY(0);}
-    to{transform:translateY(-50%);}
-}
-
-@keyframes move2{
-    from{transform:translateY(0);}
-    to{transform:translateY(-50%);}
-}
-
-@keyframes move3{
-    from{transform:translateY(0);}
-    to{transform:translateY(-50%);}
-}
-
-/* ===========================
-      PURPLE GLOW
-=========================== */
-
-body::before{
-    content:"";
-    position:absolute;
-    width:700px;
-    height:700px;
-    background:radial-gradient(circle,#8a2be255,transparent 70%);
-    filter:blur(80px);
-    animation:pulse 5s ease-in-out infinite;
-}
-
-@keyframes pulse{
-    0%,100%{
-        transform:scale(1);
-        opacity:.6;
-    }
-    50%{
-        transform:scale(1.15);
-        opacity:1;
-    }
-}
-
-/* ===========================
-          CARD
-=========================== */
-
-.container{
-    position:relative;
-    z-index:10;
-
-    width:700px;
-    max-width:90%;
-
-    padding:50px;
-
-    border-radius:22px;
-
-    background:rgba(25,25,25,.82);
-
-    backdrop-filter:blur(10px);
-
-    border:2px solid rgba(162,89,255,.35);
-
-    text-align:center;
-
-    box-shadow:
-    0 0 35px #8a2be2,
-    0 0 70px rgba(162,89,255,.25);
-}
-
-/* ===========================
-        TITLE
-=========================== */
-
-h1{
-    color:#c77dff;
-    font-size:55px;
-    margin-bottom:15px;
-
-    animation:glow 2s ease-in-out infinite alternate;
-}
-
-@keyframes glow{
-
-from{
-text-shadow:
-0 0 10px #a259ff,
-0 0 20px #a259ff;
-}
-
-to{
-text-shadow:
-0 0 25px #a259ff,
-0 0 50px #a259ff,
-0 0 80px #a259ff;
-}
-
-}
-
-.subtitle{
-    color:white;
-    font-size:24px;
-    margin-bottom:35px;
-}
-
-/* ===========================
-        BUTTONS
-=========================== */
-
-.buttons{
-    display:flex;
-    justify-content:center;
-    align-items:flex-end;
-    gap:30px;
-    flex-wrap:wrap;
-}
-
-.youtube-section{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-}
-
-.support-text{
-    color:white;
-    font-size:18px;
-    margin-bottom:12px;
-    font-weight:bold;
-}
-
-.youtube-btn,
-.discord-btn{
-
-display:inline-block;
-
-padding:18px 42px;
-
-border-radius:12px;
-
-text-decoration:none;
-
-font-size:22px;
-
-font-weight:bold;
-
-color:white;
-
-transition:.3s;
-
-}
-
-.youtube-btn{
-
-background:#ff0000;
-
-box-shadow:
-0 0 20px red,
-0 0 40px rgba(255,0,0,.4);
-
-}
-
-.youtube-btn:hover{
-
-transform:translateY(-4px) scale(1.06);
-
-box-shadow:
-0 0 30px red,
-0 0 60px red;
-
-}
-
-.discord-btn{
-
-background:#8a2be2;
-
-box-shadow:
-0 0 20px #8a2be2,
-0 0 40px rgba(138,43,226,.5);
-
-}
-
-.discord-btn:hover{
-
-transform:translateY(-4px) scale(1.06);
-
-box-shadow:
-0 0 30px #8a2be2,
-0 0 60px #8a2be2;
-
-}
-
-/* ===========================
-      MOBILE
-=========================== */
-
-@media(max-width:650px){
-
-.container{
-padding:35px 25px;
-}
-
-h1{
-font-size:38px;
-}
-
-.subtitle{
-font-size:18px;
-}
-
-.buttons{
-flex-direction:column;
-gap:22px;
-align-items:center;
-}
-
-.youtube-btn,
-.discord-btn{
-font-size:20px;
-padding:16px 30px;
-}
-
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+body{background:#050505;min-height:100vh;display:flex;justify-content:center;align-items:center;overflow:hidden;position:relative}
+.stars,.stars2,.stars3{position:absolute;inset:0;width:100%;height:200%;pointer-events:none}
+.stars{background-image:radial-gradient(circle,#c77dff 2px,transparent 3px),radial-gradient(circle,#b517ff 2px,transparent 3px);background-size:320px 320px;background-position:40px 60px,180px 200px;animation:move 12s linear infinite;opacity:.9;filter:drop-shadow(0 0 8px #b517ff)}
+.stars2{background-image:radial-gradient(circle,#fff 3px,transparent 4px),radial-gradient(circle,#d78cff 3px,transparent 4px);background-size:480px 480px;background-position:120px 80px,280px 260px;animation:move 18s linear infinite;opacity:.65;filter:drop-shadow(0 0 12px #c77dff)}
+.stars3{background-image:radial-gradient(circle,#fff 4px,transparent 5px);background-size:700px 700px;background-position:250px 180px;animation:move 24s linear infinite;opacity:.45;filter:drop-shadow(0 0 18px #fff)}
+@keyframes move{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+body::before{content:"";position:absolute;width:700px;height:700px;background:radial-gradient(circle,#8a2be255,transparent 70%);filter:blur(80px);animation:pulse 5s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.15);opacity:1}}
+.container{position:relative;z-index:10;width:700px;max-width:90%;padding:50px;border-radius:22px;background:rgba(25,25,25,.82);backdrop-filter:blur(10px);border:2px solid rgba(162,89,255,.35);text-align:center;box-shadow:0 0 35px #8a2be2,0 0 70px rgba(162,89,255,.25)}
+h1{color:#c77dff;font-size:55px;margin-bottom:15px;animation:glow 2s ease-in-out infinite alternate}
+@keyframes glow{from{text-shadow:0 0 10px #a259ff,0 0 20px #a259ff}to{text-shadow:0 0 25px #a259ff,0 0 50px #a259ff,0 0 80px #a259ff}}
+.subtitle{color:#fff;font-size:24px;margin-bottom:35px}
+.buttons{display:flex;justify-content:center;align-items:flex-end;gap:30px;flex-wrap:wrap}
+.youtube-section{display:flex;flex-direction:column;align-items:center}
+.support-text{color:#fff;font-size:18px;margin-bottom:12px;font-weight:bold}
+.youtube-btn,.discord-btn{display:inline-block;padding:18px 42px;border-radius:12px;text-decoration:none;font-size:22px;font-weight:bold;color:#fff;transition:.3s}
+.youtube-btn{background:#f00;box-shadow:0 0 20px red,0 0 40px rgba(255,0,0,.4)}
+.youtube-btn:hover{transform:translateY(-4px) scale(1.06);box-shadow:0 0 30px red,0 0 60px red}
+.discord-btn{background:#8a2be2;box-shadow:0 0 20px #8a2be2,0 0 40px rgba(138,43,226,.5)}
+.discord-btn:hover{transform:translateY(-4px) scale(1.06);box-shadow:0 0 30px #8a2be2,0 0 60px #8a2be2}
+
+/* ==== AUTH UI ==== */
+.auth-bar{position:absolute;top:18px;right:18px;z-index:20;display:flex;align-items:center;gap:10px}
+.auth-bar span{color:#c77dff;font-size:14px}
+.ghost-btn{background:transparent;color:#fff;border:1px solid rgba(162,89,255,.5);padding:8px 16px;border-radius:9px;font-size:14px;font-weight:bold;cursor:pointer;transition:.25s}
+.ghost-btn:hover{border-color:#a259ff;color:#c77dff;box-shadow:0 0 15px #8a2be2}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;justify-content:center;align-items:center;z-index:50}
+.modal.open{display:flex}
+.modal-card{background:#141414;border:2px solid rgba(162,89,255,.35);border-radius:18px;padding:32px;width:340px;max-width:90%;box-shadow:0 0 40px #8a2be2;text-align:center}
+.modal-card h2{color:#c77dff;margin-bottom:18px;font-size:26px}
+.modal-card input{width:100%;padding:12px;margin-bottom:12px;border-radius:9px;border:1px solid #333;background:#1e1e1e;color:#fff;font-size:15px;outline:none}
+.modal-card input:focus{border-color:#a259ff}
+.modal-card .discord-btn{width:100%;padding:12px;font-size:17px;border:none;cursor:pointer}
+.switch{color:#aaa;font-size:13px;margin-top:14px;cursor:pointer}
+.switch b{color:#c77dff}
+.msg{color:#ff7676;font-size:13px;min-height:18px;margin-bottom:6px}
+@media(max-width:650px){.container{padding:35px 25px}h1{font-size:38px}.subtitle{font-size:18px}.buttons{flex-direction:column;gap:22px;align-items:center}.youtube-btn,.discord-btn{font-size:20px;padding:16px 30px}}
 </style>
-
 </head>
-
 <body>
 
 <div class="stars"></div>
 <div class="stars2"></div>
 <div class="stars3"></div>
 
+<!-- LOGIN / LOGOUT BAR -->
+<div class="auth-bar">
+  <span id="userEmail"></span>
+  <button class="ghost-btn" id="loginBtn">Log in</button>
+  <button class="ghost-btn" id="logoutBtn" style="display:none">Log out</button>
+</div>
+
 <div class="container">
+  <h1>Join BR0S DC Server</h1>
+  <p class="subtitle">Click a button below</p>
 
-<h1>Join BR0S DC Server</h1>
-<p class="subtitle" style="color:#b517ff;">Click a button below</p>
-
-<div class="buttons">
-
-<div class="youtube-section">
-
-<p class="support-text" style="color: #d78cff;"> Support us here 👇</p>
-
-<a class="youtube-btn"
-href="https://www.youtube.com/@HamduVibes007"
-target="_blank">
-▶ YouTube
-</a>
-
+  <div class="buttons">
+    <div class="youtube-section">
+      <p class="support-text">Support us here 👇</p>
+      <a class="youtube-btn" href="https://www.youtube.com/@HamduVibes007" target="_blank">▶ YouTube</a>
+    </div>
+    <a class="discord-btn" href="https://discord.gg/FP5W8XnQs" target="_blank">👾 Join Now</a>
+  </div>
 </div>
 
-<a class="discord-btn"
-href="https://discord.gg/FP5W8XnQs"
-target="_blank">
-👾 Join Now
-</a>
-
+<!-- LOGIN MODAL -->
+<div class="modal" id="authModal">
+  <div class="modal-card">
+    <h2 id="authTitle">Log in</h2>
+    <p class="msg" id="authMsg"></p>
+    <input type="email" id="emailInput" placeholder="Email">
+    <input type="password" id="passInput" placeholder="Password">
+    <button class="discord-btn" id="submitBtn">Log in</button>
+    <p class="switch" id="switchMode">No account? <b>Sign up</b></p>
+    <p class="switch" id="closeModal">Close</p>
+  </div>
 </div>
 
-</div>
+<script type="module">
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
+// 🔑 Put your backend URL + publishable key here
+const SUPABASE_URL = "YOUR_BACKEND_URL";
+const SUPABASE_KEY = "YOUR_PUBLISHABLE_KEY";
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+const modal = document.getElementById("authModal");
+const title = document.getElementById("authTitle");
+const submitBtn = document.getElementById("submitBtn");
+const switchMode = document.getElementById("switchMode");
+const msg = document.getElementById("authMsg");
+const userEmail = document.getElementById("userEmail");
+const loginBtn = document.getElementById("loginBtn");
+const logoutBtn = document.getElementById("logoutBtn");
+let isSignup = false;
+
+function render(session) {
+  const user = session?.user;
+  userEmail.textContent = user ? user.email : "";
+  loginBtn.style.display = user ? "none" : "inline-block";
+  logoutBtn.style.display = user ? "inline-block" : "none";
+}
+
+supabase.auth.getSession().then(({ data }) => render(data.session));
+supabase.auth.onAuthStateChange((_e, session) => render(session));
+
+loginBtn.onclick = () => { msg.textContent = ""; modal.classList.add("open"); };
+document.getElementById("closeModal").onclick = () => modal.classList.remove("open");
+logoutBtn.onclick = () => supabase.auth.signOut();
+
+switchMode.onclick = () => {
+  isSignup = !isSignup;
+  title.textContent = isSignup ? "Sign up" : "Log in";
+  submitBtn.textContent = isSignup ? "Sign up" : "Log in";
+  switchMode.innerHTML = isSignup ? "Have an account? <b>Log in</b>" : "No account? <b>Sign up</b>";
+  msg.textContent = "";
+};
+
+submitBtn.onclick = async () => {
+  const email = document.getElementById("emailInput").value.trim();
+  const password = document.getElementById("passInput").value;
+  msg.textContent = "";
+  const { error } = isSignup
+    ? await supabase.auth.signUp({ email, password, options: { emailRedirectTo: window.location.origin } })
+    : await supabase.auth.signInWithPassword({ email, password });
+  if (error) { msg.textContent = error.message; return; }
+  msg.textContent = isSignup ? "Check your email to confirm." : "";
+  if (!isSignup) modal.classList.remove("open");
+};
+</script>
 </body>
 </html>
